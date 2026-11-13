@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juan Nolberto Condori Quispe | CV</title>
+  <meta name="description" content="Currículum personal de Juan Nolberto Condori Quispe">
+  <style>
+/* ============ VARIABLES (cambia los colores aquí) ============ */
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --text: #1c2233;
+  --muted: #5f6b85;
+  --accent: #3b5bdb;
+  --accent-soft: #e7ecff;
+  --border: #e3e7f0;
+  --radius: 14px;
+  --shadow: 0 4px 18px rgba(28, 34, 51, 0.07);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1320;
+    --surface: #171c2e;
+    --text: #e8ebf5;
+    --muted: #9aa5c2;
+    --accent: #7b93ff;
+    --accent-soft: #232b4d;
+    --border: #262d47;
+    --shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* ============ BASE ============ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul { list-style: none; }
+
+section {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+h2 {
+  font-size: 1.7rem;
+  margin-bottom: 28px;
+  position: relative;
+  padding-bottom: 10px;
+}
+h2::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 48px; height: 4px;
+  border-radius: 4px;
+  background: var(--accent);
+}
+
+.section-intro { color: var(--muted); margin: -12px 0 28px; }
+
+/* ============ NAVEGACIÓN ============ */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 24px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-weight: 800; font-size: 1.1rem;
+  background: var(--accent); color: #fff;
+  padding: 6px 10px; border-radius: 8px;
+}
+.logo:hover { text-decoration: none; }
+.nav nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.nav nav a { color: var(--muted); font-size: 0.93rem; font-weight: 500; }
+.nav nav a:hover { color: var(--accent); text-decoration: none; }
+
+/* ============ HERO ============ */
+.hero {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: center;
+  min-height: 80vh;
+}
+.eyebrow { color: var(--accent); font-weight: 600; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; margin: 6px 0; }
+.role { font-size: 1.25rem; color: var(--muted); margin-bottom: 16px; }
+.lead { max-width: 52ch; margin-bottom: 28px; }
+
+.buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  padding: 11px 22px; border-radius: 10px; font-weight: 600;
+  border: 2px solid var(--accent); color: var(--accent);
+  transition: transform 0.15s, background 0.15s;
+}
+.btn:hover { transform: translateY(-2px); text-decoration: none; background: var(--accent-soft); }
+.btn.primary { background: var(--accent); color: #fff; }
+.btn.primary:hover { background: var(--accent); filter: brightness(1.1); }
+
+.hero-photo {
+  position: relative;
+  width: min(300px, 100%);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 6px solid var(--surface);
+  background: var(--accent-soft);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.initials {
+  position: absolute; inset: 0; z-index: -1;
+  display: grid; place-items: center;
+  font-size: 4rem; font-weight: 800; color: var(--accent);
+}
+.hero-photo.no-photo .initials { z-index: 1; }
+
+/* ============ SOBRE MÍ ============ */
+.about p { margin-bottom: 14px; max-width: 70ch; }
+.facts {
+  margin-top: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  display: grid; gap: 6px;
+}
+
+/* ============ LÍNEA DE TIEMPO ============ */
+.timeline { border-left: 3px solid var(--accent-soft); padding-left: 24px; }
+.item { position: relative; margin-bottom: 30px; }
+.item::before {
+  content: "";
+  position: absolute; left: -33px; top: 6px;
+  width: 15px; height: 15px; border-radius: 50%;
+  background: var(--accent); border: 3px solid var(--bg);
+}
+.date {
+  display: inline-block; font-size: 0.82rem; font-weight: 600;
+  color: var(--accent); background: var(--accent-soft);
+  padding: 2px 10px; border-radius: 20px; margin-bottom: 6px;
+}
+.item h3 { font-size: 1.15rem; }
+.place { color: var(--muted); margin-bottom: 6px; }
+.item ul { list-style: disc; padding-left: 20px; color: var(--text); }
+
+/* ============ CURSOS ============ */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  display: flex; flex-direction: column; gap: 8px;
+  transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-4px); }
+.tag {
+  align-self: flex-start;
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--accent); background: var(--accent-soft);
+  padding: 3px 10px; border-radius: 20px;
+}
+.card h3 { font-size: 1.1rem; }
+.card > p { color: var(--muted); font-size: 0.93rem; flex: 1; }
+.prof {
+  margin-top: 8px; padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.prof-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.prof a { font-size: 0.9rem; font-weight: 600; }
+
+/* ============ HABILIDADES ============ */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
+.skills h3 { margin-bottom: 12px; font-size: 1.05rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chips li {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 6px 14px; border-radius: 20px; font-size: 0.9rem;
+}
+
+/* ============ CONTACTO ============ */
+.contact { display: flex; flex-wrap: wrap; gap: 14px; }
+.contact a {
+  display: inline-block;
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 12px 20px; border-radius: 10px; font-weight: 600;
+  box-shadow: var(--shadow);
+}
+.contact a:hover { background: var(--accent-soft); text-decoration: none; }
+
+/* ============ FOOTER ============ */
+footer {
+  text-align: center; padding: 28px 24px;
+  color: var(--muted); font-size: 0.88rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; text-align: center; min-height: auto; padding-top: 40px; }
+  .hero-photo { order: -1; width: 220px; }
+  .lead { margin-inline: auto; }
+  .buttons { justify-content: center; }
+  .nav nav { gap: 12px; }
+  .nav nav a { font-size: 0.85rem; }
+}
+
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <a href="#inicio" class="logo">JC</a>
+    <nav>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#educacion">Educación</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="inicio" class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Hola, soy</p>
+        <h1>Juan Nolberto Condori Quispe</h1>
+        <p class="role">Estudiante de Ciencia de la Computación</p>
+        <p class="lead">Me apasionan las computadoras y el fútbol. Quiero entender cómo funciona una computadora por dentro y algún día crear un videojuego para compartirlo con todo el mundo.</p>
+      </div>
+      <div class="hero-photo">
+        <img src="foto.jpg" alt="Foto de Juan Nolberto Condori Quispe" onerror="this.style.display='none'; this.parentNode.classList.add('no-photo');">
+        <span class="initials">JC</span>
+      </div>
+    </section>
+
+    <section id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <div class="about">
+        <p>Soy Juan Nolberto, tengo 17 años y estudio Ciencia de la Computación en la Universidad Católica San Pablo, en Arequipa. Actualmente curso el primer ciclo. Me apasionan las computadoras y el fútbol.</p>
+        <p>Aún no tengo experiencia laboral, pero tengo muchas ganas de aprender y de descubrir cómo funciona realmente una computadora. Mi gran meta es crear un videojuego y publicarlo para que cualquier persona en el mundo pueda jugarlo. También quiero usar la computación para crear algo que haga la vida más fácil.</p>
+        <ul class="facts">
+          <li><strong>Ubicación:</strong> Arequipa, Perú</li>
+          <li><strong>Idiomas:</strong> Español (nativo)</li>
+          <li><strong>Intereses:</strong> Computación, videojuegos y fútbol</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <h2>Experiencia</h2>
+      <p class="section-intro">Todavía no tengo experiencia laboral, y justo por eso busco oportunidades para aprender, practicar y crecer.</p>
+    </section>
+
+    <section id="educacion">
+      <h2>Educación</h2>
+      <div class="timeline">
+        <article class="item">
+          <span class="date">Actualidad</span>
+          <h3>Ciencia de la Computación (Computer Science)</h3>
+          <p class="place">Universidad Católica San Pablo, Arequipa</p>
+          <p>Cursando el primer ciclo</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="cursos">
+      <h2>Cursos de mi carrera</h2>
+      <p class="section-intro">
+        Los cursos que llevo en mi carrera, junto con los docentes que los dictan.
+      </p>
+      <div class="cards">
+        <article class="card">
+          <span class="tag">Ciclo 1</span>
+          <h3>ICC - Introducción a la Computación</h3>
+          <p>Curso de introducción de la carrera: mis primeros pasos para entender cómo funciona la computación.</p>
+          <div class="prof">
+            <span class="prof-label">Profesor/a</span>
+            <strong>Ernesto Cuadros Vargas</strong>
+            <a href="https://www.linkedin.com/in/ecuadrosv" target="_blank" rel="noopener noreferrer">
+              Ver perfil en LinkedIn ↗
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="habilidades">
+      <h2>Habilidades</h2>
+      <div class="skills">
+        <div>
+          <h3>Técnicas</h3>
+          <ul class="chips">
+            <li>Fundamentos de computación (aprendiendo)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Blandas</h3>
+          <ul class="chips">
+            <li>Ganas de aprender</li>
+            <li>Curiosidad por la tecnología</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p class="section-intro">Pronto agregaré mis datos de contacto.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Juan Nolberto Condori Quispe · Generado con Python</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
