@@ -5,110 +5,149 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Juan Nolberto Condori Quispe | CV</title>
   <meta name="description" content="Currículum personal de Juan Nolberto Condori Quispe">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="nav">
-    <a href="#inicio" class="logo">JC</a>
-    <nav>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#experiencia">Experiencia</a>
-      <a href="#educacion">Educación</a>
-      <a href="#cursos">Cursos</a>
-      <a href="#habilidades">Habilidades</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+    <div class="wrap nav-inner">
+      <a href="#inicio" class="logo" aria-label="Ir al inicio">JC</a>
+      <nav aria-label="Secciones">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#educacion">Educación</a>
+        <a href="#universidad">Universidad</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#contacto">Contactos</a>
+      </nav>
+    </div>
   </header>
 
   <main>
 
     <section id="inicio" class="hero">
-      <div class="hero-text">
-        <p class="eyebrow">Hola, soy</p>
-        <h1>Juan Nolberto Condori Quispe</h1>
-        <p class="role">Estudiante de Ciencia de la Computación</p>
-        <p class="lead">Me apasionan las computadoras y el fútbol. Quiero entender cómo funciona una computadora por dentro y algún día crear un videojuego para compartirlo con todo el mundo.</p>
-      </div>
-      <div class="hero-photo">
-        <img src="foto.jpg" alt="Foto de Juan Nolberto Condori Quispe" onerror="this.style.display='none'; this.parentNode.classList.add('no-photo');">
-        <span class="initials">JC</span>
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">Hola, soy</p>
+          <h1>Juan Nolberto <span>Condori Quispe</span></h1>
+          <p class="role">Estudiante de Ciencia de la Computación</p>
+          <p class="lead">Quiero entender cómo funciona una computadora por dentro y algún día crear un <mark>videojuego</mark> para compartirlo con todo el mundo.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#sobre-mi">Conóceme</a>
+            <a class="btn ghost" href="#contacto">Contactos</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-photo">
+            <img src="foto.jpg" alt="Foto de Juan Nolberto Condori Quispe" onerror="this.style.display='none'; this.parentNode.classList.add('no-photo');">
+            <span class="initials">JC</span>
+          </div>
+          <pre class="hero-code" aria-hidden="true"><b>edad</b>  = 17
+<b>ciclo</b> = 1
+<b>meta</b>  = "mi videojuego"</pre>
+        </div>
       </div>
     </section>
 
     <section id="sobre-mi">
-      <h2>Sobre mí</h2>
-      <div class="about">
-        <p>Soy Juan Nolberto, tengo 17 años y estudio Ciencia de la Computación en la Universidad Católica San Pablo, en Arequipa. Actualmente curso el primer ciclo. Me apasionan las computadoras y el fútbol.</p>
-        <p>Aún no tengo experiencia laboral, pero tengo muchas ganas de aprender y de descubrir cómo funciona realmente una computadora. Mi gran meta es crear un videojuego y publicarlo para que cualquier persona en el mundo pueda jugarlo. También quiero usar la computación para crear algo que haga la vida más fácil.</p>
-        <ul class="facts">
-          <li><strong>Ubicación:</strong> Arequipa, Perú</li>
-          <li><strong>Idiomas:</strong> Español (nativo)</li>
-          <li><strong>Intereses:</strong> Computación, videojuegos y fútbol</li>
-        </ul>
+      <div class="wrap">
+        <h2>Sobre mí</h2>
+        <div class="about">
+          <p>Estudio Ciencia de la Computación en la Universidad Católica San Pablo, en Arequipa. Aún no tengo experiencia laboral, y justo por eso busco oportunidades para aprender, practicar y crecer.</p>
+          <p>Mi gran meta es publicar un videojuego que cualquier persona pueda jugar. También quiero usar la computación para crear algo que haga la vida más fácil.</p>
+          <ul class="facts">
+            <li><strong>Ubicación</strong> Arequipa, Perú</li>
+            <li><strong>Idiomas</strong> Español (nativo)</li>
+            <li><strong>Intereses</strong> Computación, videojuegos y fútbol</li>
+            <li><strong>LinkedIn</strong> <a href="https://www.linkedin.com/in/juan-n-a8458644b" target="_blank" rel="noopener noreferrer">Ver mi perfil ↗</a></li>
+          </ul>
+        </div>
       </div>
-    </section>
-
-    <section id="experiencia">
-      <h2>Experiencia</h2>
-      <p class="section-intro">Todavía no tengo experiencia laboral, y justo por eso busco oportunidades para aprender, practicar y crecer.</p>
     </section>
 
     <section id="educacion">
-      <h2>Educación</h2>
-      <div class="timeline">
-        <article class="item">
-          <span class="date">Actualidad</span>
-          <h3>Ciencia de la Computación (Computer Science)</h3>
-          <p class="place">Universidad Católica San Pablo, Arequipa</p>
-          <p>Cursando el primer ciclo</p>
-        </article>
+      <div class="wrap">
+        <h2>Educación</h2>
+        <div class="timeline">
+          <article class="item">
+            <span class="date">Actualidad · Primer ciclo</span>
+            <h3>Ciencia de la Computación (Computer Science)</h3>
+            <p class="place">Universidad Católica San Pablo, Arequipa</p>
+            <div class="course">
+              <span class="course-label">Curso</span>
+              <h3>ICC - Introducción a la Computación</h3>
+              <p>Profesor: Ernesto Cuadros Vargas</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section id="cursos">
-      <h2>Cursos de mi carrera</h2>
-      <p class="section-intro">
-        Los cursos que llevo en mi carrera, junto con los docentes que los dictan.
-      </p>
-      <div class="cards">
-        <article class="card">
-          <span class="tag">Ciclo 1</span>
-          <h3>ICC - Introducción a la Computación</h3>
-          <p>Curso de introducción de la carrera: mis primeros pasos para entender cómo funciona la computación.</p>
-          <div class="prof">
-            <span class="prof-label">Profesor/a</span>
-            <strong>Ernesto Cuadros Vargas</strong>
-            <a href="https://www.linkedin.com/in/ecuadrosv" target="_blank" rel="noopener noreferrer">
-              Ver perfil en LinkedIn ↗
-            </a>
+    <section id="universidad">
+      <div class="wrap">
+        <h2>Universidad</h2>
+        <div class="uni">
+          <img class="uni-photo" src="ucsp.jpg" alt="Vista aérea de noche del campus de la Universidad Católica San Pablo, con una palmera y el letrero UCSP en el patio central" loading="lazy">
+          <div class="uni-body">
+            <div>
+              <h3>Universidad Católica San Pablo</h3>
+              <p>Arequipa, Perú</p>
+            </div>
+            <a class="btn primary" href="https://ucsp.edu.pe/" target="_blank" rel="noopener noreferrer">Visitar ucsp.edu.pe ↗</a>
           </div>
-        </article>
+        </div>
       </div>
     </section>
 
     <section id="habilidades">
-      <h2>Habilidades</h2>
-      <div class="skills">
-        <div>
-          <h3>Técnicas</h3>
-          <ul class="chips">
-            <li>Fundamentos de computación (aprendiendo)</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Blandas</h3>
-          <ul class="chips">
-            <li>Ganas de aprender</li>
-            <li>Curiosidad por la tecnología</li>
-          </ul>
-        </div>
+      <div class="wrap">
+        <h2>Habilidades</h2>
+        <ul class="chips">
+          <li>Fundamentos de computación (aprendiendo)</li>
+          <li>Ganas de aprender</li>
+          <li>Curiosidad por la tecnología</li>
+        </ul>
       </div>
     </section>
 
     <section id="contacto">
-      <h2>Contacto</h2>
-      <p class="section-intro">Pronto agregaré mis datos de contacto.</p>
+      <div class="wrap">
+        <h2>Contactos</h2>
+        <p class="section-intro">Mi profesor y personas con las que me conecto en LinkedIn.</p>
+        <div class="contacts">
+          <article class="contact">
+            <span class="avatar" aria-hidden="true">EC</span>
+            <div class="contact-info">
+              <h3>Ernesto Cuadros Vargas</h3>
+              <p>Profesor de Fundamentos de Programación</p>
+            </div>
+            <a href="https://www.linkedin.com/in/ecuadrosv" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </article>
+          <article class="contact">
+            <span class="avatar" aria-hidden="true">FG</span>
+            <div class="contact-info">
+              <h3>Fabricio Gabriel</h3>
+            </div>
+            <a href="https://www.linkedin.com/in/fabricio-gabriel-chura-garcia-6aab05331" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </article>
+          <article class="contact">
+            <span class="avatar" aria-hidden="true">LS</span>
+            <div class="contact-info">
+              <h3>Luis Savina</h3>
+            </div>
+            <a href="https://www.linkedin.com/in/luis-angel-savina-encinas-785555434" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </article>
+          <article class="contact">
+            <span class="avatar" aria-hidden="true">CL</span>
+            <div class="contact-info">
+              <h3>Cintia Luz</h3>
+            </div>
+            <a href="https://www.linkedin.com/in/cinthia-luz-mamani-chata-833624437" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </article>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -119,6 +158,24 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Resalta en el menú la sección que se está viendo
+    (function () {
+      var links = document.querySelectorAll('.nav nav a');
+      var sections = [];
+      links.forEach(function (a) {
+        var s = document.querySelector(a.getAttribute('href'));
+        if (s) sections.push({ link: a, el: s });
+      });
+      function update() {
+        var y = window.scrollY + 120, current = null;
+        sections.forEach(function (s) { if (s.el.offsetTop <= y) current = s; });
+        links.forEach(function (a) { a.classList.remove('active'); });
+        if (current) current.link.classList.add('active');
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
   </script>
 </body>
 </html>

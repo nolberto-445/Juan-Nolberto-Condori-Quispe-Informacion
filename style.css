@@ -1,0 +1,553 @@
+/* ==========================================================
+   CV de Juan Nolberto Condori Quispe
+   Idea: una página clara, con verde de cancha de fútbol como
+   acento y detalles de código (tipografía mono) para la parte
+   de computación. Funciona en modo claro y oscuro.
+   ========================================================== */
+
+:root {
+  --bg: #f2f6f3;
+  --surface: #ffffff;
+  --fg: #0f1b16;
+  --muted: #4b5c54;
+  --line: #d5e0d9;
+  --accent: #17794a;
+  --accent-ink: #ffffff;
+  --accent-soft: #ddf0e5;
+  --gold-soft: #fbebc2;
+  --nav-bg: rgba(242, 246, 243, 0.86);
+  --shadow: 0 1px 2px rgba(15, 27, 22, 0.05), 0 12px 32px -12px rgba(15, 27, 22, 0.18);
+
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --radius: 20px;
+  --maxw: 1080px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1511;
+    --surface: #14201a;
+    --fg: #e7f0eb;
+    --muted: #9db0a6;
+    --line: #24352c;
+    --accent: #4ccb8a;
+    --accent-ink: #06140d;
+    --accent-soft: #163526;
+    --gold-soft: #3a2e0e;
+    --nav-bg: rgba(12, 21, 17, 0.86);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -12px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0c1511;
+  --surface: #14201a;
+  --fg: #e7f0eb;
+  --muted: #9db0a6;
+  --line: #24352c;
+  --accent: #4ccb8a;
+  --accent-ink: #06140d;
+  --accent-soft: #163526;
+  --gold-soft: #3a2e0e;
+  --nav-bg: rgba(12, 21, 17, 0.86);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -12px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Franja bajo la barra del teléfono, del mismo color que el menú */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: var(--nav-bg);
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p { margin: 0; }
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--maxw) + 32px);
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- Menú ---------- */
+.nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: var(--nav-bg);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 0.7rem;
+}
+
+.logo {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 12px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nav nav {
+  display: flex;
+  gap: 0.25rem;
+  margin-left: auto;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav nav::-webkit-scrollbar { display: none; }
+
+.nav nav a {
+  flex: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: var(--muted);
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav nav a:hover { color: var(--fg); background: var(--accent-soft); }
+.nav nav a.active { color: var(--accent); background: var(--accent-soft); }
+
+/* ---------- Secciones ---------- */
+section {
+  padding-block: 4.5rem;
+}
+
+section + section { border-top: 1px solid var(--line); }
+
+h2 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.75rem;
+}
+
+h3 { font-size: 1.2rem; font-weight: 700; }
+
+.section-intro {
+  color: var(--muted);
+  max-width: 60ch;
+  margin-bottom: 1.75rem;
+}
+
+/* ---------- Portada ---------- */
+.hero {
+  padding-block: 4rem 5rem;
+  display: block;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.eyebrow::before { content: "> "; opacity: 0.6; }
+
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+.hero h1 span { color: var(--accent); }
+
+.role {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.lead {
+  margin-top: 1.5rem;
+  max-width: 54ch;
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+.lead mark {
+  background: var(--gold-soft);
+  color: var(--fg);
+  padding: 0.05em 0.3em;
+  border-radius: 6px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  text-decoration: none;
+  border: 2px solid var(--accent);
+  transition: transform 0.2s, background 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { color: var(--accent); }
+.btn.ghost:hover { background: var(--accent-soft); }
+
+/* Foto sobre un campo de fútbol dibujado con líneas */
+.hero-visual { position: relative; justify-self: center; width: 100%; max-width: 360px; }
+
+.hero-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-width: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 0 17%, var(--accent) 17% calc(17% + 2px), transparent calc(17% + 2px)),
+    linear-gradient(var(--accent) 0 0) center / 100% 2px no-repeat,
+    repeating-linear-gradient(0deg, var(--accent-soft) 0 44px, color-mix(in srgb, var(--accent-soft) 70%, var(--bg)) 44px 88px);
+  border: 2px solid var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.hero-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.initials {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 5.5rem;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+}
+
+.hero-code {
+  position: absolute;
+  left: -1.25rem;
+  bottom: -1.5rem;
+  z-index: 2;
+  margin: 0;
+  padding: 0.9rem 1.1rem;
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--fg);
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  box-shadow: var(--shadow);
+}
+.hero-code b { color: var(--accent); font-weight: 600; }
+
+/* ---------- Sobre mí ---------- */
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 1rem 3rem;
+  align-items: start;
+}
+.about p { max-width: 62ch; }
+.about p + p { margin-top: 1rem; }
+.about p { grid-column: 1; }
+
+.facts {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.facts li { padding: 1rem 0; }
+.facts li + li { border-top: 1px solid var(--line); }
+.facts strong {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.facts a {
+  color: var(--accent);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Educación ---------- */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.55rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: var(--line);
+}
+
+.item {
+  position: relative;
+  padding: 1.5rem 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.item::before {
+  content: "";
+  position: absolute;
+  left: calc(-2rem + 0.2rem);
+  top: 1.9rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+}
+
+.date {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.place { color: var(--accent); font-weight: 600; margin-top: 0.35rem; }
+.course p { color: var(--muted); }
+
+/* Curso dentro de la tarjeta de educación */
+.course {
+  margin-top: 1.25rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+.course-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.course h3 { font-size: 1.05rem; margin-top: 0.3rem; }
+.course p { margin-top: 0.2rem; }
+
+/* ---------- Universidad ---------- */
+.uni {
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.uni-photo {
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  object-fit: cover;
+  object-position: center 60%;
+}
+.uni-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+  padding: 1.5rem 1.75rem;
+}
+.uni-body > div { min-width: 0; }
+.uni p { margin-top: 0.3rem; color: var(--muted); }
+
+/* ---------- Habilidades ---------- */
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+}
+.chips li {
+  padding: 0.5rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+
+/* ---------- Contactos ---------- */
+.contacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: 1.25rem;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s;
+}
+.contact:hover { transform: translateY(-4px); }
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.contact-info { min-width: 0; }
+.contact-info h3 { font-size: 1.1rem; }
+.contact-info p {
+  margin-top: 0.3rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.contact > a {
+  margin-top: auto;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Pie ---------- */
+footer {
+  border-top: 1px solid var(--line);
+  padding-block: 2rem;
+  text-align: center;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+/* ---------- Pantallas pequeñas ---------- */
+@media (max-width: 780px) {
+  section { padding-block: 3.25rem; }
+  .hero { padding-block: 2.5rem 3.5rem; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 3rem; }
+  .hero-visual { max-width: 300px; margin-bottom: 1.5rem; }
+  .hero-code { left: 0.5rem; }
+  .about { grid-template-columns: minmax(0, 1fr); }
+  .about p, .facts { grid-column: 1; grid-row: auto; }
+  .facts { margin-top: 1.5rem; }
+  .nav-inner { gap: 0.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
